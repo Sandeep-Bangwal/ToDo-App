@@ -1,6 +1,6 @@
 # ToDo-App
 
-mutlti user todo application using django.
+multi user todo application using django.
 
 ## Screenshots 
 
