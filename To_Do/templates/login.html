@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %} {% endblock %}
+
+{% block CSS %} 
+<link rel="stylesheet" href="/static/signUp.css">
+{% endblock CSS %}
+
+{% block body %}
+
+<div class="container">
+  <h1 class="text-center">Log In</h1>
+  <hr>
+    <form action="login" method="post">
+    {% csrf_token %}
+    {% include "alert.html" %}
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">User Name</label>
+        <input type="text" class="form-control" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Password</label>
+        <input type="password" class="form-control" name="Password">
+      </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="submit">Log In</button>
+      </div>
+    </form>
+</div>
+
+{% endblock body%}

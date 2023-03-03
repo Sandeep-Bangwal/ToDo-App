@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %} {% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">TODO-APP</a>
+    <form class="d-flex">
+      <ul class="navbar-nav me-3 ">
+        <li class="nav-item ">
+         Hi,{{ request.user }}
+        </li>
+      </ul>
+      <a href="logout"><button type="button" class="btn btn-outline-success">Log Out</button></a>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container mt-5">
+    <form action="addTasks" method="post" class="row g-3">
+        {% csrf_token %}
+        {% include "alert.html" %}
+        <div class="col-md-8">
+            <input type="text" class="form-control" name="tasks" placeholder="Enter Your Tasks..">
+            <input type="hidden" class="form-control" name="user_id" value="{{request.session.user}}" placeholder="Enter Your Tasks..">
+         
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary" type="submit">Add tasks</button>
+        </div>
+        </form>
+
+        <table class="table table-hover mt-4 " style="width:80%">
+          <thead>
+            <tr>
+              <th scope="col">No</th>
+              <th scope="col">Todo item</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for display in dis %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{display.tasks_desc}}</td>
+              <td>{{display.status}}</td>
+              <td>
+                <a href="{% url 'delete' display.task_id%}"><button type="submit" class="btn btn-danger">Delete</button></a>
+                <a href="{% url 'Finished' display.task_id%}"><button type="submit" class="btn btn-success">Finished</button></a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+</div>
+
+
+
+
+
+{% endblock body%}

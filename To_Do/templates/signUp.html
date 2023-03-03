@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block CSS %} 
+<link rel="stylesheet" href="/static/signUp.css">
+{% endblock CSS %}
+
+{% block body %}
+
+<div class="container">
+  <h2 class="text-center">SignUp</h2>
+  <hr>
+    <form action=" " method="post">
+    {% csrf_token %}
+    {% include 'alert.html' %}
+    <div class="mb-3">
+        <label class="form-label">User Name</label>
+        <input type="text" class="form-control" name="username">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">email</label>
+        <input type="email" class="form-control" name="email">
+      </div>
+      <div class="row">
+      <div class="col">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="Password">
+      </div>
+      <div class="col">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="Cpassword">
+      </div>
+    </div>
+      <div class="d-grid gap-2 mt-2">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+      <p class="text-center">Already have account? <a href="login">Log in</a></p>
+    </form>
+</div>
+
+
+{% endblock body%}
